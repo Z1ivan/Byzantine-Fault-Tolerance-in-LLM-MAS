@@ -1,0 +1,50 @@
+# CP-WBFT Requirements
+# Official Implementation for AAAI 2026
+# Tested Environment: Python 3.10-3.12, CUDA 12.6
+
+# ============================================
+# Core Scientific Computing
+# ============================================
+numpy>=2.0.0
+scipy>=1.14.0
+pandas>=2.0.0
+scikit-learn>=1.5.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+networkx>=3.0
+
+# ============================================
+# Configuration & Utilities
+# ============================================
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+PyYAML>=6.0
+tqdm>=4.60.0
+
+# ============================================
+# LLM API Support (Pilot & Prompt Probe)
+# ============================================
+openai>=1.0.0
+
+# ============================================
+# Local Model Support (Decoder Probe / HCP)
+# Required for running HCP experiments with local LLaMA models
+# ============================================
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0
+sentencepiece>=0.1.99
+tokenizers>=0.13.0
+safetensors>=0.3.0
+
+# ============================================
+# Note: The following are automatically installed
+# as dependencies of the above packages:
+#   - huggingface-hub (from transformers)
+#   - tiktoken (from openai)
+#   - requests, urllib3 (HTTP clients)
+#   - Pillow (image processing)
+#   - packaging, setuptools (build tools)
+#   - nvidia-* (CUDA runtime, installed with torch)
+# ============================================

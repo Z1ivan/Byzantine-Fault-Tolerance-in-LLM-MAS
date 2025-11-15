@@ -1,0 +1,284 @@
+{
+  "questions": [
+    {
+      "id": "2435de612dd69f2012b9e40d6af4ce38",
+      "question": "James was looking for a good place to buy farmland.  Where might he look?",
+      "choices": [
+        "midwest",
+        "countryside",
+        "estate",
+        "farming areas",
+        "illinois"
+      ],
+      "correct_answer": "midwest",
+      "gpt4omini": {
+        "response": "Answer: A  \nConfidence: 0.8  \n\nReasoning: The Midwest is known for its extensive agricultural land and is often considered one of the best regions in the United States for farming. While other options like \"countryside,\" \"estate,\" \"farming areas,\" and \"Illinois\" could also be relevant, the Midwest specifically encompasses a large area known for its fertile soil and farming opportunities, making it the most suitable choice for someone looking to buy farmland.",
+        "extracted_answer": "A",
+        "confidence": 0.8000000000000002,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: D\nConfidence: 0.8",
+        "extracted_answer": "D",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "8af63d58cc35061dec38e5448c325988",
+      "question": "Unlike a spider and his many sight seers, people only have what?",
+      "choices": [
+        "tongues",
+        "names",
+        "brains",
+        "feelings",
+        "two eyes"
+      ],
+      "correct_answer": "two eyes",
+      "gpt4omini": {
+        "response": "To analyze the question, we need to consider the comparison being made between spiders and people. The phrase \"unlike a spider and his many sight seers\" suggests that spiders have multiple eyes (often many more than two), while people typically have a standard number of eyes.\n\nNow, let's evaluate the options:\n\nA. tongues - This does not relate to the comparison of sight or vision.\nB. names - While people have names, this does not relate to the comparison of sight.\nC. brains - Both spiders and people have brains, so this does not fit the comparison.\nD. feelings - This is a characteristic of people but does not relate to the comparison of sight.\nE. two eyes - This directly contrasts with the idea of a spider having many sight seers (eyes).\n\nGiven this analysis, the most fitting answer is E, as it highlights the difference in the number of eyes between spiders and humans.\n\nAnswer: E\nConfidence: 0.9",
+        "extracted_answer": "E",
+        "confidence": 0.9,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: C\nConfidence: 0.8",
+        "extracted_answer": "C",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "f646f3e064f06423fc25b98500796cf0",
+      "question": "What is someone who isn't clever, bright, or competent called?",
+      "choices": [
+        "clumsy",
+        "ineffectual",
+        "dull",
+        "clumsy",
+        "stupid"
+      ],
+      "correct_answer": "stupid",
+      "gpt4omini": {
+        "response": "Answer: E  \nConfidence: 0.9  \n\nReasoning: The term \"stupid\" directly refers to a lack of intelligence or competence, which aligns closely with the description of someone who isn't clever, bright, or competent. While \"dull\" (C) could also fit, it is often used in a more nuanced context and may not convey the same level of incompetence as \"stupid.\" The other options (A, B, D) do not directly relate to intelligence or competence in the same way. Therefore, I am highly confident that \"stupid\" is the most appropriate choice.",
+        "extracted_answer": "E",
+        "confidence": 0.8666666666666667,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: C. dull\nConfidence: 0.8",
+        "extracted_answer": "C",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "9889e5389917d812c09d6e5d382d333d",
+      "question": "After he got hired he hoped for success at his what?",
+      "choices": [
+        "vocation",
+        "new job",
+        "michigan",
+        "working hard",
+        "manual"
+      ],
+      "correct_answer": "new job",
+      "gpt4omini": {
+        "response": "Answer: B  \nConfidence: 0.9  \n\nReasoning: The phrase \"after he got hired\" suggests that the context is about employment. The most straightforward interpretation is that he is hoping for success at his \"new job,\" which directly relates to being hired. While \"vocation\" (A) could also fit, it is a broader term that doesn't specifically indicate the immediate context of a new position. The other options (C, D, E) do not relate directly to the context of employment or success in a job. Therefore, \"new job\" is the most appropriate choice.",
+        "extracted_answer": "B",
+        "confidence": 0.9,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: A\nConfidence: 0.8",
+        "extracted_answer": "A",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "4acd496cc78d96c2431279a5fd87de7c",
+      "question": "She was always helping at the senior center, it brought her what?",
+      "choices": [
+        "satisfaction",
+        "heart",
+        "feel better",
+        "pay",
+        "happiness"
+      ],
+      "correct_answer": "happiness",
+      "gpt4omini": {
+        "response": "Answer: E  \nConfidence: 0.8  \n\nReasoning: Helping at the senior center is often associated with positive emotional outcomes, such as happiness. While satisfaction (A) could also be a valid choice, happiness (E) is a more direct and common emotional response to engaging in altruistic activities. The other options (B, C, D) do not fit as well in the context of what helping at a senior center typically brings. Therefore, I am quite confident that happiness is the most appropriate answer.",
+        "extracted_answer": "E",
+        "confidence": 0.8000000000000002,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: A\nConfidence: 0.8",
+        "extracted_answer": "A",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "a588407ecaecf0f30c2241c30b470fe2",
+      "question": "Who is likely to be excited about a crab?",
+      "choices": [
+        "fish market",
+        "pet shop",
+        "fishmongers",
+        "intertidal zone",
+        "obesity"
+      ],
+      "correct_answer": "fishmongers",
+      "gpt4omini": {
+        "response": "Answer: C  \nConfidence: 0.8  \n\nReasoning: Fishmongers are individuals or businesses that sell fish and seafood, including crabs. They would likely be excited about a crab because it represents a product they can sell. While a fish market (A) could also be excited about crabs, it is a broader term that encompasses various seafood, making C the more specific and fitting choice. A pet shop (B) might be interested in crabs as pets, but this is less common than their culinary use. The intertidal zone (D) is a habitat where crabs live, but it does not express excitement. Obesity (E) is unrelated to the context of crabs. Thus, C is the most appropriate choice.",
+        "extracted_answer": "C",
+        "confidence": 0.8000000000000002,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: B\nConfidence: 0.8\n\nReasoning: A pet shop is likely to be excited about a crab because they may sell them as pets to customers. Fish markets and fishmongers may be more interested in selling crabs for consumption rather than as pets. The intertidal zone is a habitat where crabs live, so it wouldn't be excited about a crab in the same way a pet shop would. Obesity is not related to being excited about a crab.",
+        "extracted_answer": "B",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "74ad13a03634e79c85382f1b90969b74",
+      "question": "What is likely to satisfy someone's curiosity?",
+      "choices": [
+        "hear news",
+        "read book",
+        "see favorite show",
+        "comedy show",
+        "go somewhere"
+      ],
+      "correct_answer": "hear news",
+      "gpt4omini": {
+        "response": "To determine which option is likely to satisfy someone's curiosity, we need to consider what each choice offers in terms of information or engagement.\n\nA. **Hear news** - This option can provide new information and updates, which can satisfy curiosity about current events or developments.\n\nB. **Read book** - Reading a book can also satisfy curiosity, especially if the book is informative or explores a topic of interest.\n\nC. **See favorite show** - Watching a favorite show may provide entertainment but may not necessarily satisfy curiosity unless the show is educational or informative.\n\nD. **Comedy show** - While a comedy show can be entertaining, it is primarily for amusement and may not address curiosity directly.\n\nE. **Go somewhere** - Going somewhere can lead to new experiences and discoveries, which can satisfy curiosity, but it depends on the destination and context.\n\nAmong these options, both \"hear news\" and \"read book\" stand out as they directly provide information that can satisfy curiosity. However, \"hear news\" is more immediate and often relates to current events, which many people are curious about.\n\nAnswer: A\nConfidence: 0.8",
+        "extracted_answer": "A",
+        "confidence": 0.8000000000000002,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: C\nConfidence: 0.8",
+        "extracted_answer": "C",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "3fb36127a61903029a363911a1d2b1e9_1",
+      "question": "You'll find a landing at the top of what?",
+      "choices": [
+        "ocean",
+        "apartment building",
+        "stairwell",
+        "airport",
+        "room"
+      ],
+      "correct_answer": "stairwell",
+      "gpt4omini": {
+        "response": "To determine what you would find a landing at the top of, let's analyze the options:\n\nA. **ocean** - This doesn't make sense as oceans do not have landings at the top.\n\nB. **apartment building** - While apartment buildings have landings, they are typically not referred to as being \"at the top\" in a general sense.\n\nC. **stairwell** - A stairwell has landings at various levels, including the top. This is a strong candidate.\n\nD. **airport** - Airports have landing areas for planes, but this doesn't fit the context of a \"landing\" in the sense of a physical structure.\n\nE. **room** - Rooms do not have landings; they are enclosed spaces.\n\nGiven this analysis, the most logical answer is C. **stairwell**, as it directly relates to the concept of landings at various levels, including the top.\n\nAnswer: C  \nConfidence: 0.8",
+        "extracted_answer": "C",
+        "confidence": 0.8333333333333334,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: D\nConfidence: 0.8",
+        "extracted_answer": "D",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "11d7db1d8e1cff2f40d4184f15cf7ae7",
+      "question": "John and James are idiots. They bought two tickets to the Falcons vs the Jets even though neither wanted to see the what?",
+      "choices": [
+        "internet cafe",
+        "sporting event",
+        "pressing wrong buttons",
+        "obesity",
+        "hockey game"
+      ],
+      "correct_answer": "sporting event",
+      "gpt4omini": {
+        "response": "To determine the correct answer, we need to analyze the context of the question. John and James bought tickets to a game between the Falcons and the Jets, which are both NFL teams. This indicates that they purchased tickets for a football game, which is a type of sporting event.\n\nNow, let's evaluate the choices:\n\nA. internet cafe - This does not relate to the context of the game.\nB. sporting event - This is directly related to the game they bought tickets for.\nC. pressing wrong buttons - This is irrelevant to the context of the game.\nD. obesity - This does not relate to the context of the game.\nE. hockey game - This is a different sport and not relevant to the Falcons vs. Jets game.\n\nSince John and James bought tickets to a football game, it is clear that they did not want to see a \"sporting event\" in general, as they bought tickets to one. However, the phrasing of the question suggests they did not want to see the specific sporting event they purchased tickets for, which is football.\n\nGiven that the question implies they bought tickets to a sporting event they didn't want to see, the most fitting answer is:\n\nAnswer: B\nConfidence: 0.8\n\nThis reflects a high level of confidence because the reasoning aligns well with the context of the question.",
+        "extracted_answer": "B",
+        "confidence": 0.8666666666666667,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: E\nConfidence: 0.8",
+        "extracted_answer": "E",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    },
+    {
+      "id": "afa2899cc21e204fa64e63e7839e8c1e",
+      "question": "The hikers stopped to have a drink, simply put they what?",
+      "choices": [
+        "had a party",
+        "were thirsty",
+        "refreshment",
+        "getting drunk",
+        "celebrating"
+      ],
+      "correct_answer": "were thirsty",
+      "gpt4omini": {
+        "response": "Answer: B  \nConfidence: 0.8  \n\nReasoning: The phrase \"stopped to have a drink\" implies that the hikers were likely thirsty and needed to hydrate. While other options like \"refreshment\" (C) could also fit, it is less direct than option B, which clearly indicates the reason for stopping. The other options (A, D, E) do not align with the context of simply having a drink. Therefore, I am quite confident that B is the best choice.",
+        "extracted_answer": "B",
+        "confidence": 0.8000000000000002,
+        "correct": true,
+        "num_trials": 3,
+        "stability": "3/3"
+      },
+      "gpt35turbo": {
+        "response": "Answer: C\nConfidence: 0.8",
+        "extracted_answer": "C",
+        "confidence": 0.8000000000000002,
+        "correct": false,
+        "num_trials": 3,
+        "stability": "0/3"
+      }
+    }
+  ]
+}

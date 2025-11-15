@@ -1,0 +1,111 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
+tmp/
+
+# Experiment results (uncomment if you don't want to track results)
+# results/
+# *.json
+# *.png
+# *.txt
+
+# Large model files - DO NOT UPLOAD LLAMA MODELS TO GITHUB
+# Keep symlinks but not actual model weights
+models/LLama-3-8B-Instruct/*
+!models/LLama-3-8B-Instruct/.gitkeep
+models/LLama-3.1-8B-Instruct/*
+!models/LLama-3.1-8B-Instruct/.gitkeep
+
+# Hidden states data (large files from extraction)
+hidden_states/
+*.h5
+*.hdf5
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*

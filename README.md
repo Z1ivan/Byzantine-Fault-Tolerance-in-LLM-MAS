@@ -416,16 +416,89 @@ python methods/unified_entry.py decoder --dataset-type gsm8k --topology complete
 
 ## 🛠️ Advanced Usage
 
-### Extract Hidden States (for training new probes)
+### Extract Hidden States (Step 1: Data Preparation)
+
+Extract hidden states from LLaMA models for probe training:
 
 ```bash
 python tools/hidden_states_extract.py \
   --model-path models/LLama-3-8B-Instruct \
   --dataset-path data/byzantine/gsm8k/gsm8k_questions.json \
-  --output-dir hidden_states/gsm8k
+  --output-dir data/hidden_states/gsm8k/llama3
 ```
 
-### Pareto Analysis (optimal layer/config selection)
+**Output Structure**:
+```
+data/hidden_states/gsm8k/llama3/
+├── train/
+│   ├── train_query_hidden_states.npy    # (N, L, D)
+│   ├── train_pooled_hidden_states.npy   # (N, L, D)
+│   └── train_data_with_labels.json      # Labels
+└── test/
+    └── ...
+```
+
+### Train Confidence Probes (Step 2: Probe Training)
+
+Train custom confidence probes using the unified trainer:
+
+#### Train Single Probe
+
+```bash
+# Train GSM8K probe for LLaMA-3.1
+python core/unified_probe_trainer.py \
+  --dataset gsm8k_llama31 \
+  --probe-type pooled \
+  --method logistic \
+  --layer 12 \
+  --pca-dim 256 \
+  --epochs 100 \
+  --save-model
+```
+
+#### Batch Test Multiple Configurations
+
+```bash
+# Find optimal layer and configuration
+python core/unified_probe_trainer.py \
+  --dataset gsm8k_llama3 \
+  --test-layers 8 12 16 20 24 \
+  --test-types pooled query answer \
+  --test-dims 128 256 512 \
+  --save-model
+```
+
+#### Train MLP Probe (for CommonsenseQA)
+
+```bash
+python core/unified_probe_trainer.py \
+  --dataset commonsense_llama31 \
+  --method mlp \
+  --mlp-hidden-dims 128 64 \
+  --dropout 0.1 \
+  --layer 14 \
+  --save-model
+```
+
+**Supported Datasets**:
+- `gsm8k_llama3` / `gsm8k_llama31`
+- `safe_llama3` / `safe_llama31`
+- `commonsense_llama3` / `commonsense_llama31`
+
+**Probe Types**:
+- `pooled`: Averaged hidden states (most common)
+- `query`: Query token states
+- `answer`: Answer token states
+
+**Output**:
+```
+lcd_outputs/gsm8k/3.1_pooled_layer12_pca256_logistic/
+├── lcd_model.pkl       # Trained probe + PCA + Scaler
+├── metrics.json        # Performance metrics
+└── mlp_model.pth       # (if method=mlp)
+```
+
+### Pareto Analysis (Step 3: Optimal Configuration Selection)
 
 ```bash
 python tools/pareto_analyzer.py \
@@ -442,12 +515,11 @@ If you find this work useful, please cite our paper (we will update the referenc
 **arXiv Preprint**: [https://arxiv.org/abs/2511.10400](https://arxiv.org/abs/2511.10400)
 
 ```bibtex
-@inproceedings{zheng2026byzantine,
+@article{zheng2025rethinking,
   title={Rethinking the Reliability of Multi-agent System: A Perspective from Byzantine Fault Tolerance},
-  author={Lifan Zheng, Jiawei Chen, Qinghong Yin, Jingyuan Zhang, Xinyi Zeng and Yu, Tian},
-  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  year={2026},
-  note={arXiv:2511.10400}
+  author={Zheng, Lifan and Chen, Jiawei and Yin, Qinghong and Zhang, Jingyuan and Zeng, Xinyi and Tian, Yu},
+  journal={arXiv preprint arXiv:2511.10400},
+  year={2025}
 }
 ```
 

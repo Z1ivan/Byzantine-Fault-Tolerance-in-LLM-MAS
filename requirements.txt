@@ -38,6 +38,9 @@ sentencepiece>=0.1.99
 tokenizers>=0.13.0
 safetensors>=0.3.0
 
+# Supplementary dependence
+aiohttp>=3.8.0
+
 # ============================================
 # Note: The following are automatically installed
 # as dependencies of the above packages:

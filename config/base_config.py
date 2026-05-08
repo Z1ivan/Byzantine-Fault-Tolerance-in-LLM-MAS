@@ -137,9 +137,9 @@ class BaseConfigManager:
                            help="LLaMA3.1本地模型路径")
 
         parser.add_argument("--api-key", help="API密钥")
-        parser.add_argument("--api-base-url", 
-                           default="https://api.openai.com/v1",
-                           help="API基础URL（OpenAI兼容接口，例如官方 OpenAI 或兼容代理网关）")
+        parser.add_argument("--api-base-url",
+                           default=None,
+                           help="API base URL (OpenAI-compatible). Defaults to API_BASE_URL env var, then https://api.openai.com/v1")
         parser.add_argument("--temperature", type=float, default=None,
                            help="生成温度（由方法/数据集决定默认值）")
         parser.add_argument("--max-tokens", type=int, default=1000,
@@ -153,6 +153,7 @@ class BaseConfigManager:
 
         api_key = (
             args.api_key
+            or os.getenv("OPENROUTER_API_KEY")
             or os.getenv("OPENAI_COMPATIBILITY_API_KEY")
             or os.getenv("OPENAI_API_KEY")
             or os.getenv("API_KEY")

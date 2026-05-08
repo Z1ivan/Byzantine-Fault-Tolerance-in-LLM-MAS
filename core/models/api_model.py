@@ -50,9 +50,10 @@ class APIModel(BaseModel):
             pass
 
         api_keys = [
+            'OPENROUTER_API_KEY',
             'OPENAI_API_KEY',
-            'OPENAI_COMPATIBILITY_API_KEY', 
-            'API_KEY'
+            'OPENAI_COMPATIBILITY_API_KEY',
+            'API_KEY',
         ]
 
         for key_name in api_keys:
@@ -62,6 +63,23 @@ class APIModel(BaseModel):
                 return api_key
 
         return None
+
+    def _is_openrouter(self) -> bool:
+        return "openrouter.ai" in self.api_base_url.lower()
+
+    def _build_headers(self) -> dict:
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+        if self._is_openrouter():
+            # OpenRouter recommends these for usage tracking / rankings
+            site_url = os.getenv("OPENROUTER_SITE_URL", "")
+            site_name = os.getenv("OPENROUTER_SITE_NAME", "CP-WBFT")
+            if site_url:
+                headers["HTTP-Referer"] = site_url
+            headers["X-Title"] = site_name
+        return headers
 
     def _prepare_camel_config(self):
 
@@ -181,10 +199,7 @@ class APIModel(BaseModel):
                 "stream": False
             }
 
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
+            headers = self._build_headers()
 
             url = f"{self.api_base_url.rstrip('/')}/chat/completions"
 
@@ -226,10 +241,7 @@ class APIModel(BaseModel):
                 "stream": False
             }
 
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
+            headers = self._build_headers()
 
             url = f"{self.api_base_url.rstrip('/')}/chat/completions"
 

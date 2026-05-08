@@ -166,12 +166,37 @@ Create a `.env` file from the template:
 cp .env.example .env
 ```
 
-Edit `.env` to add your API credentials:
+#### Option A — OpenAI
 
 ```bash
 API_KEY="your_openai_api_key_here"
 API_BASE_URL="https://api.openai.com/v1"
 ```
+
+#### Option B — OpenRouter
+
+[OpenRouter](https://openrouter.ai) provides a single API key that routes to 400+ models (GPT-5.5, Claude Opus 4.7, Gemini, Llama, DeepSeek, and more) with automatic fallback across providers. Get your key at [openrouter.ai/keys](https://openrouter.ai/keys).
+
+```bash
+OPENROUTER_API_KEY="your_openrouter_api_key_here"
+API_BASE_URL="https://openrouter.ai/api/v1"
+
+# Optional — for attribution in OpenRouter's usage dashboard
+OPENROUTER_SITE_URL="https://your-site.com"
+OPENROUTER_SITE_NAME="CP-WBFT"
+```
+
+Then use any OpenRouter model name as `--strong-model` or `--weak-model`:
+
+```bash
+# Example: Claude as honest agent, GPT-4o-mini as malicious agent
+python methods/unified_entry.py prompt_probe --dataset-type gsm8k --topology complete --agents 7 --malicious 6 --strong-model anthropic/claude-opus-4.7 --weak-model openai/gpt-4o-mini --lang en
+
+# Example: Gemini vs DeepSeek
+python methods/unified_entry.py prompt_probe --dataset-type gsm8k --topology complete --agents 7 --malicious 6 --strong-model google/gemini-3.1-pro-preview --weak-model deepseek/deepseek-chat --lang en
+```
+
+Browse available models at [openrouter.ai/models](https://openrouter.ai/models).
 
 ---
 

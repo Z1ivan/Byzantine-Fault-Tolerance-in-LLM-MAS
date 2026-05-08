@@ -38,7 +38,7 @@ CP-WBFT is a **protocol layer** deliberately decoupled from the content it reaso
 │   (PCP via prompt  /  HCP via hidden states)    │
 ├─────────────────────────────────────────────────┤
 │              Agent / Model Layer                │
-│   (traditional lookup / API LLM / local LLaMA) │
+│   (traditional lookup / API LLM / local LLaMA)  │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -519,7 +519,7 @@ python tools/hidden_states_extract.py \
 **Output Structure**:
 ```
 data/hidden_states/gsm8k/llama3/
-├��─ train/
+|—— train/
 │   ├── train_query_hidden_states.npy    # (N, L, D)
 │   ├── train_pooled_hidden_states.npy   # (N, L, D)
 │   └── train_data_with_labels.json      # Labels
@@ -601,7 +601,7 @@ python tools/pareto_analyzer.py \
 
 If you find this work useful, please cite our paper (we will update the reference information later~):
 
-**Paper**: [Paper](https://ojs.aaai.org/index.php/AAAI/article/view/40806)
+**Paper Link**: [Paper](https://ojs.aaai.org/index.php/AAAI/article/view/40806)
 
 ```bibtex
 @inproceedings{zheng2026rethinking,

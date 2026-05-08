@@ -96,6 +96,44 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 ```
 
+### Windows: UTF-8 Encoding
+
+On Windows, Python defaults to `cp1252` encoding which causes a `charmap codec` error when the visualization code reads files containing Chinese characters. Fix this by setting `PYTHONUTF8=1`, which tells Python to use UTF-8 everywhere.
+
+**Option A — Git Bash profile (applies to your terminal sessions):**
+
+```bash
+echo 'export PYTHONUTF8=1' >> ~/.bashrc
+source ~/.bashrc
+```
+
+**Option B — Windows user environment variable (applies system-wide):**
+
+```powershell
+[System.Environment]::SetEnvironmentVariable('PYTHONUTF8', '1', 'User')
+```
+
+Then reopen your terminal. Without this, experiments still run and results are saved correctly, but the visualization PNG files will not be generated.
+
+### Windows: `--mode` flag
+
+The README quick-start example uses `--mode test`, which is incorrect. The valid choices are `single` (one question) or `all` (all 10 questions):
+
+```bash
+# Correct
+python methods/unified_entry.py pilot --dataset-type gsm8k --topology complete \
+  --agents 7 --malicious 6 --agent-type traditional --mode single --rounds 1
+```
+
+### English log output
+
+All log messages are in Chinese by default. Pass `--lang en` to switch to English:
+
+```bash
+python methods/unified_entry.py pilot --dataset-type gsm8k --topology complete \
+  --agents 7 --malicious 6 --agent-type traditional --mode single --rounds 1 --lang en
+```
+
 ### Configuration
 
 Create a `.env` file from the template:

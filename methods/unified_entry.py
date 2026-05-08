@@ -54,6 +54,16 @@ def _load_env_files() -> None:
 
 _load_env_files()
 
+# ---------------------------------------------------------------------------
+# i18n – import lazily so the module works even if core/ is not yet on path
+# ---------------------------------------------------------------------------
+try:
+    from core.i18n import set_language, install_translating_formatter as _install_fmt
+except ImportError:
+    set_language = lambda lang: None  # noqa: E731
+    _install_fmt = lambda **kw: None  # noqa: E731
+
+
 class UnifiedMethodEntry:
 
     def __init__(self):
@@ -264,13 +274,20 @@ def main():
         "--log-level",
         choices=["DEBUG", "INFO", "WARNING", "ERROR"],
         default="INFO",
-        help="日志级别"
+        help="Log level"
+    )
+
+    parser.add_argument(
+        "--lang",
+        choices=["en", "zh"],
+        default="zh",
+        help="Output language for log messages: 'en' for English, 'zh' for Chinese (default)"
     )
 
     parser.add_argument(
         "-h", "--help",
         action="store_true",
-        help="显示帮助信息"
+        help="Show help"
     )
 
     args, unknown_args = parser.parse_known_args()
@@ -284,10 +301,16 @@ def main():
             parser.print_help()
         return
 
+    # Configure language before any logging output is produced
+    set_language(args.lang)
+
     logging.basicConfig(
         level=getattr(logging, args.log_level),
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
+
+    if args.lang == "en":
+        _install_fmt(fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
     entry = get_unified_entry()
 
@@ -295,26 +318,45 @@ def main():
         try:
             result = await entry.run_experiment(args.method, args.config, extra_args=unknown_args)
 
-            print(f"\n实验完成!")
-            print(f"实验ID: {result.experiment_id}")
-            print(f"方法类型: {result.method_type.value}")
-            print(f"智能体数量: {result.agent_count}")
-            print(f"恶意智能体数量: {result.malicious_count}")
-            print(f"执行时间: {result.execution_time:.2f}秒")
+            if args.lang == "en":
+                print(f"\nExperiment complete!")
+                print(f"Experiment ID: {result.experiment_id}")
+                print(f"Method type: {result.method_type.value}")
+                print(f"Agent count: {result.agent_count}")
+                print(f"Malicious agent count: {result.malicious_count}")
+                print(f"Execution time: {result.execution_time:.2f}s")
 
-            if result.evaluation_metrics:
-                overall = result.evaluation_metrics.get('overall_assessment', {})
-                if 'accuracy' in overall:
-                    print(f"准确率: {overall['accuracy']:.4f}")
-                if 'consensus_rate' in overall:
-                    print(f"共识率: {overall['consensus_rate']:.4f}")
+                if result.evaluation_metrics:
+                    overall = result.evaluation_metrics.get('overall_assessment', {})
+                    if 'accuracy' in overall:
+                        print(f"Accuracy: {overall['accuracy']:.4f}")
+                    if 'consensus_rate' in overall:
+                        print(f"Consensus rate: {overall['consensus_rate']:.4f}")
 
-                safety = result.evaluation_metrics.get('safety_assessment', {})
-                if safety:
-                    print(f"安全率: {safety.get('safety_rate', 'N/A')}")
+                    safety = result.evaluation_metrics.get('safety_assessment', {})
+                    if safety:
+                        print(f"Safety rate: {safety.get('safety_rate', 'N/A')}")
+            else:
+                print(f"\n实验完成!")
+                print(f"实验ID: {result.experiment_id}")
+                print(f"方法类型: {result.method_type.value}")
+                print(f"智能体数量: {result.agent_count}")
+                print(f"恶意智能体数量: {result.malicious_count}")
+                print(f"执行时间: {result.execution_time:.2f}秒")
+
+                if result.evaluation_metrics:
+                    overall = result.evaluation_metrics.get('overall_assessment', {})
+                    if 'accuracy' in overall:
+                        print(f"准确率: {overall['accuracy']:.4f}")
+                    if 'consensus_rate' in overall:
+                        print(f"共识率: {overall['consensus_rate']:.4f}")
+
+                    safety = result.evaluation_metrics.get('safety_assessment', {})
+                    if safety:
+                        print(f"安全率: {safety.get('safety_rate', 'N/A')}")
 
         except Exception as e:
-            logger.error(f"实验失败: {e}")
+            logger.error(f"Experiment failed: {e}" if args.lang == "en" else f"实验失败: {e}")
             sys.exit(1)
 
     asyncio.run(run_experiment())

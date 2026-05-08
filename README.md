@@ -17,6 +17,39 @@ This repository provides a clean, academic implementation of the **CP-WBFT** (Co
 - 📊 Experiments on **GSM8K**, **XSTest/Safe**, and **CommonsenseQA** (10 questions each)
 - 🔧 **Pretrained confidence probes** (no training required)
 
+## 🏗️ Architecture Overview
+
+CP-WBFT is a **protocol layer** deliberately decoupled from the content it reasons about. The framework sits between your input task and the underlying models:
+
+```
+┌─────────────────────────────────────────────────┐
+│              Your Input / Task                  │
+│   (math problems, safety questions, MCQ, etc.)  │
+├─────────────────────────────────────────────────┤
+│           Network Topology Layer                │
+│   (complete, star, chain, tree, random...)      │
+├─────────────────────────────────────────────────┤
+│         Byzantine Consensus Protocol            │
+│   (majority vote  →  CP-WBFT weighted vote)     │
+├─────────────────────────────────────────────────┤
+│           Confidence Probe Layer                │
+│   (PCP via prompt  /  HCP via hidden states)    │
+├─────────────────────────────────────────────────┤
+│              Agent / Model Layer                │
+│   (traditional lookup / API LLM / local LLaMA) │
+└─────────────────────────────────────────────────┘
+```
+
+The protocol does not care what the question is — it only needs to know what answer each agent gave and how confident they were. The three included datasets are chosen to stress-test this generality across different task types:
+
+| Dataset | Task type | Why it tests the protocol |
+|---|---|---|
+| **GSM8K** | Math — single numeric answer | Objectively verifiable correct/wrong |
+| **XSTest/Safe** | Safety classification | Binary judgment, not factual recall |
+| **CommonsenseQA** | Multiple-choice reasoning | Structured answer space (A/B/C/D) |
+
+Because the consensus layer is content-agnostic, the same framework can in principle be applied to any multi-agent decision task where robustness against compromised nodes matters: code review, medical diagnosis agreement, fraud detection, document classification, and more.
+
 ---
 
 ## 📑 Table of Contents
@@ -48,18 +81,19 @@ cd Byzantine-Fault-Tolerance-in-LLM-MAS
 # Install dependencies
 pip install numpy scipy pandas scikit-learn matplotlib networkx python-dotenv openai
 
-# Run a pilot experiment with traditional agents (no API needed)
-python methods/unified_entry.py pilot \
-  --dataset-type gsm8k \
-  --topology complete \
-  --agents 7 \
-  --malicious 6 \
-  --agent-type traditional \
-  --mode test \
-  --rounds 1
+# Run a single question (quick smoke-test, no API needed)
+python methods/unified_entry.py pilot --dataset-type gsm8k --topology complete --agents 7 --malicious 6 --agent-type traditional --mode single --rounds 1
+
+# Run all 10 questions
+python methods/unified_entry.py pilot --dataset-type gsm8k --topology complete --agents 7 --malicious 6 --agent-type traditional --mode all --rounds 1
+
+# English log output (optional)
+python methods/unified_entry.py pilot --dataset-type gsm8k --topology complete --agents 7 --malicious 6 --agent-type traditional --mode single --rounds 1 --lang en
 
 # Check results in: results/pilot/gsm8k/traditional/
 ```
+
+> **Note**: `--mode` accepts `single` (one question) or `all` (all 10 questions). The value `test` is not valid.
 
 **Expected Output**: Consensus accuracy, topology visualization, and detailed analysis reports.
 
@@ -114,16 +148,6 @@ source ~/.bashrc
 ```
 
 Then reopen your terminal. Without this, experiments still run and results are saved correctly, but the visualization PNG files will not be generated.
-
-### Windows: `--mode` flag
-
-The README quick-start example uses `--mode test`, which is incorrect. The valid choices are `single` (one question) or `all` (all 10 questions):
-
-```bash
-# Correct
-python methods/unified_entry.py pilot --dataset-type gsm8k --topology complete \
-  --agents 7 --malicious 6 --agent-type traditional --mode single --rounds 1
-```
 
 ### English log output
 

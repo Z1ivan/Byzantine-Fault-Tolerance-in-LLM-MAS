@@ -577,11 +577,14 @@ If you find this work useful, please cite our paper (we will update the referenc
 **arXiv Preprint**: [https://arxiv.org/abs/2511.10400](https://arxiv.org/abs/2511.10400)
 
 ```bibtex
-@article{zheng2025rethinking,
-  title={Rethinking the Reliability of Multi-agent System: A Perspective from Byzantine Fault Tolerance},
+@inproceedings{zheng2026rethinking,
+  title={Rethinking the reliability of multi-agent system: A perspective from byzantine fault tolerance},
   author={Zheng, Lifan and Chen, Jiawei and Yin, Qinghong and Zhang, Jingyuan and Zeng, Xinyi and Tian, Yu},
-  journal={arXiv preprint arXiv:2511.10400},
-  year={2025}
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={40},
+  number={41},
+  pages={35012--35020},
+  year={2026}
 }
 ```
 

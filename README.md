@@ -9,7 +9,9 @@ Official implementation of the paper:
 > **"Rethinking the Reliability of Multi-agent System: A Perspective from Byzantine Fault Tolerance"**  
 > *AAAI Conference on Artificial Intelligence (AAAI 2026)*
 
-This repository provides a clean, academic implementation of the **CP-WBFT** (Confidence-Probe Weighted Byzantine Fault Tolerance) framework. CP-WBFT achieves superior performance under extreme Byzantine conditions (85.7% fault rate: 6 out of 7 nodes malicious, you can freely modify the number of nodes), including:
+This repository provides a clean, academic implementation of the **CP-WBFT** (Confidence-Probe Weighted Byzantine Fault Tolerance) framework. CP-WBFT achieves superior performance under extreme Byzantine faults in multi-agent systems, with explicit confidence weighting derived from API-based (PCP) or hidden-layer (HCP) probes.
+
+## 📚 Features
 
 - 🔬 **Pilot experiments** comparing traditional vs LLM-based agents under Byzantine faults
 - 🎯 **PCP (Prompt-level Confidence Probe)** for API-based LLMs
@@ -40,7 +42,7 @@ CP-WBFT is a **protocol layer** deliberately decoupled from the content it reaso
 └─────────────────────────────────────────────────┘
 ```
 
-The protocol does not care what the question is — it only needs to know what answer each agent gave and how confident they were. The three included datasets are chosen to stress-test this generality across different task types:
+The protocol does not care what the question is — it only needs to know what answer each agent gave and how confident they were. The three included datasets are chosen to stress-test this generality:
 
 | Dataset | Task type | Why it tests the protocol |
 |---|---|---|
@@ -48,7 +50,7 @@ The protocol does not care what the question is — it only needs to know what a
 | **XSTest/Safe** | Safety classification | Binary judgment, not factual recall |
 | **CommonsenseQA** | Multiple-choice reasoning | Structured answer space (A/B/C/D) |
 
-Because the consensus layer is content-agnostic, the same framework can in principle be applied to any multi-agent decision task where robustness against compromised nodes matters: code review, medical diagnosis agreement, fraud detection, document classification, and more.
+Because the consensus layer is content-agnostic, the same framework can in principle be applied to any multi-agent decision task where robustness against compromised nodes matters: code review, medical diagnosis, financial forecasting, and more.
 
 ---
 
@@ -132,7 +134,7 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
 ### Windows: UTF-8 Encoding
 
-On Windows, Python defaults to `cp1252` encoding which causes a `charmap codec` error when the visualization code reads files containing Chinese characters. Fix this by setting `PYTHONUTF8=1`, which tells Python to use UTF-8 everywhere.
+On Windows, Python defaults to `cp1252` encoding which causes a `charmap codec` error when the visualization code reads files containing Chinese characters. Fix this by setting `PYTHONUTF8=1`, which allows Python to use UTF-8 internally:
 
 **Option A — Git Bash profile (applies to your terminal sessions):**
 
@@ -175,7 +177,7 @@ API_BASE_URL="https://api.openai.com/v1"
 
 #### Option B — OpenRouter
 
-[OpenRouter](https://openrouter.ai) provides a single API key that routes to 400+ models (GPT-5.5, Claude Opus 4.7, Gemini, Llama, DeepSeek, and more) with automatic fallback across providers. Get your key at [openrouter.ai/keys](https://openrouter.ai/keys).
+[OpenRouter](https://openrouter.ai) provides a single API key that routes to 400+ models (GPT-5.5, Claude Opus 4.7, Gemini, Llama, DeepSeek, and more) with automatic fallback across providers. Get your OpenRouter API key at [https://openrouter.ai/keys](https://openrouter.ai/keys):
 
 ```bash
 OPENROUTER_API_KEY="your_openrouter_api_key_here"
@@ -332,7 +334,7 @@ python methods/unified_entry.py decoder \
 | `--strong-model` | Model for normal agents | `gpt-4o-mini` | ❌ |
 | `--weak-model` | Model for malicious agents | `gpt-3.5-turbo` | ❌ |
 | `--rounds` | Number of consensus rounds | `1` | ❌ |
-| `--mode` | Execution mode (`test`, `all`) | `test` | ❌ |
+| `--mode` | Execution mode (`single`, `all`) | `single` | ❌ |
 
 ---
 
@@ -517,7 +519,7 @@ python tools/hidden_states_extract.py \
 **Output Structure**:
 ```
 data/hidden_states/gsm8k/llama3/
-├── train/
+├��─ train/
 │   ├── train_query_hidden_states.npy    # (N, L, D)
 │   ├── train_pooled_hidden_states.npy   # (N, L, D)
 │   └── train_data_with_labels.json      # Labels

@@ -574,7 +574,7 @@ python tools/pareto_analyzer.py \
 
 If you find this work useful, please cite our paper (we will update the reference information later~):
 
-**arXiv Preprint**: [https://arxiv.org/abs/2511.10400](https://arxiv.org/abs/2511.10400)
+**Paper**: [Paper](https://ojs.aaai.org/index.php/AAAI/article/view/40806)
 
 ```bibtex
 @inproceedings{zheng2026rethinking,
